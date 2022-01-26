@@ -33,16 +33,17 @@ function got_result(error,result){
   else{
 
     console.log(result);
-
+      
     object_name = result[0].label;
 
     object_accuracy = result[0].confidence.toFixed(2);
-
+    
+    if (object_accuracy > 0.5 && previous_result != object_name){
+    
     document.getElementById("result_object_name").innerHTML = object_name;
 
     document.getElementById("result_object_accuracy").innerHTML = object_accuracy;
 
-    if (object_accuracy > 0.5 && previous_result != object_name){
 
       previous_result = object_name;
 
